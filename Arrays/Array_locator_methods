@@ -1,0 +1,49 @@
+module tb_array_locator_methods;
+  int q[$];
+  int tq[$];
+  int d[];
+  int f[6];
+
+  initial begin
+    q = '{1, 3, 5, 7};
+    d = '{9, 1, 8, 3, 4, 4};
+    f = '{1, 6, 2, 6, 8, 6};
+    $display("Sum of q: %0d", q.sum());
+    $display("Product of q: %0d", q.product());
+
+    tq = q.min();
+    $display("Min of q: %p", tq);
+    
+    tq = q.max();
+    $display("Max of q: %p", tq);
+    
+    tq = f.unique();
+    $display("Unique elements of f: %p", tq);
+
+    tq = d.find(x) with (x > 3);
+    $display("Elements in d > 3: %p", tq);
+
+    tq = d.find_index(x) with (x > 3);
+    $display("Indexes in d where item > 3: %p", tq);
+
+    tq = d.find_index(x) with (x > 99);
+    $display("Indexes in d where item > 99: %p", tq);
+
+    tq = d.find_first_index(x) with (x == 8);
+    $display("First index in d where item == 8: %p", tq);
+
+    tq = d.find_last(x) with (x == 4);
+    $display("Last element in d where item == 4: %p", tq);
+
+    tq = d.find_last_index(x) with (x == 4);
+    $display("Last index in d where item == 4: %p", tq);
+    
+    $display("m. Sum with ((item > 7) * item): %0d", d.sum(x) with ((x > 7) * x));
+
+    $display("n. Sum with condition item < 8: %0d", d.sum(x) with (int'(x < 8)));
+
+    $display("o. Sum with ((item < 8) ? item : 0): %0d", d.sum(x) with ((x < 8) ? x : 0));
+
+  end
+
+endmodule
