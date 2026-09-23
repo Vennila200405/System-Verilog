@@ -1,3 +1,24 @@
+module queue_insert_method;
+
+    int q1[$];
+    int q2[$];
+
+    initial begin
+        q1 = '{10,20,30};
+        q2 = '{40,50,60};
+
+        $display("Before Insertion");
+        $display("q1 = %p", q1);
+        $display("q2 = %p", q2);
+      foreach (q2[i])
+            q1.push_back(q2[i]);
+        $display("After Insertion");
+        $display("q1 = %p", q1);
+    end
+endmodule
+
+//Without Array methods
+
 module queue;
   int q1[$] = '{10,20,30};
   int q2[$] = '{40,50,60};
@@ -7,3 +28,5 @@ module queue;
     $display("q1 = %p",q1);
   end
 endmodule
+
+
