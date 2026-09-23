@@ -1,0 +1,11 @@
+module dynamic_array_with_sort;
+  int arr[];
+  initial begin
+    arr = new[10];
+    arr = '{45,12,89,3,67,25,90,11,56,18};
+    $display("Before Sort = %p", arr);
+    
+    arr.sort();
+   $display("After Sort = %p", arr);
+  end
+endmodule
