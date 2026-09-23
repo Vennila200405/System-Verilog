@@ -1,0 +1,25 @@
+module tb_string_methods;
+  string str;
+  string concat_str;
+  byte ascii_val;
+
+  initial begin
+    str = "SystemVerilog";
+    $display("a. Original String: %s", str);
+    
+    ascii_val = str.getc(0); 
+    $display("b. ASCII value of first character ('%c'): %0d (Hex: 0x%0h)",  str.getc(0), ascii_val, ascii_val);
+
+    $display("c. Uppercase String: %s", str.toupper());
+
+    concat_str = {str, "3.1a"};
+    $display("d. Concatenated String: %s", concat_str);
+    
+    str.putc(str.len() - 1, "b");
+    $display("e. String after replacing last character with 'b': %s", str);
+    
+    $display("f. Substring from 2nd to 5th character: %s", str.substr(1, 4));
+
+  end
+
+endmodule
